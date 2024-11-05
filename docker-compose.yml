@@ -1,0 +1,23 @@
+version: '3'
+services:
+  chatbot:
+    build: .
+    container_name: chatbot
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    depends_on:
+      - pinecone_db
+    restart: always
+
+  pinecone_db:
+    build:
+      context: ./app/db/docker
+    container_name: pinecone_db
+    environment:
+      - PINECONE_API_KEY=${PINECONE_API_KEY}
+      - PINECONE_ENVIRONMENT=${PINECONE_ENVIRONMENT}
+    ports:
+      - "9090:9090"
+    restart: always

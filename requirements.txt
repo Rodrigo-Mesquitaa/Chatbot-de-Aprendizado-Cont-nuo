@@ -1,0 +1,5 @@
+streamlit
+langchain
+langgraph
+python-dotenv
+pinecone-client  # Cliente para a base de dados vetorial Pinecone
